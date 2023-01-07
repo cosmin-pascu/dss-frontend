@@ -5,8 +5,8 @@ import {map, Observable, startWith} from "rxjs";
 import {City} from "../../domain/City";
 import {CountryService} from "../../service/country.service";
 import {CityService} from "../../service/city.service";
-import {Shelter} from "../../domain/Shelter";
-import {SheltersService} from "../../service/shelters.service";
+import {Accommodation} from "../../domain/Accommodation";
+import {AccommodationsService} from "../../service/accommodations.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -25,7 +25,7 @@ export class NewAccommodationComponent implements OnInit {
   cities?: City[];
   filteredCities?: Observable<City[]>;
 
-  shelter: Shelter = new Shelter();
+  shelter: Accommodation = new Accommodation();
 
   photoSelected: boolean = false;
 
@@ -33,7 +33,7 @@ export class NewAccommodationComponent implements OnInit {
 
   constructor(private countryService: CountryService,
               private cityService: CityService,
-              private shelterService: SheltersService,
+              private shelterService: AccommodationsService,
               private router: Router
   ) { }
 
@@ -74,10 +74,10 @@ export class NewAccommodationComponent implements OnInit {
     }
 
     this.shelterService
-      .addShelter(this.cloneShelterWithoutPhoto(this.shelter))
+      .addAccommodation(this.cloneShelterWithoutPhoto(this.shelter))
       .subscribe((savedShelter) => {
-        if (this.shelter.photo?.photoFile && savedShelter.shelterId) {
-          this.uploadPhoto(savedShelter.shelterId, this.shelter.photo.photoFile);
+        if (this.shelter.photo?.photoFile && savedShelter.accommodationId) {
+          this.uploadPhoto(savedShelter.accommodationId, this.shelter.photo.photoFile);
           this.redirectToHomePage();
         } else {
           this.redirectToHomePage();
@@ -85,8 +85,8 @@ export class NewAccommodationComponent implements OnInit {
       })
   }
 
-  cloneShelterWithoutPhoto(shelter: Shelter): Shelter {
-    let clonedShelter = new Shelter();
+  cloneShelterWithoutPhoto(shelter: Accommodation): Accommodation {
+    let clonedShelter = new Accommodation();
 
     clonedShelter.name = shelter.name;
     clonedShelter.phone = shelter.phone;
@@ -100,7 +100,7 @@ export class NewAccommodationComponent implements OnInit {
 
   uploadPhoto(shelterId: number, photo: Blob): void {
     this.shelterService
-      .uploadPhotoToShelter(shelterId, photo)
+      .uploadPhotoToAccommodation(shelterId, photo)
       .subscribe(
         () => {
           this.redirectToHomePage();

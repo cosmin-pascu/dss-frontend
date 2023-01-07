@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Shelter} from "../../domain/Shelter";
-import {SheltersService} from "../../service/shelters.service";
+import {Accommodation} from "../../domain/Accommodation";
+import {AccommodationsService} from "../../service/accommodations.service";
 import {ApplyFilterService} from "../../service/apply-filter.service";
 import {Subscription} from "rxjs";
 import {AuthorizationService} from "../../service/authorization.service";
@@ -12,23 +12,23 @@ import {AuthorizationService} from "../../service/authorization.service";
 })
 export class AccommodationsListComponent implements OnInit, OnDestroy {
 
-  sheltersList: Shelter[] | undefined;
+  accommodationsList: Accommodation[] | undefined;
   subscription?: Subscription;
   filterMap: Map<string, string> = new Map<string, string>();
 
-  constructor(private sheltersService: SheltersService,
+  constructor(private accommodationsService: AccommodationsService,
               private applyFilterService: ApplyFilterService,
               private authorizationService: AuthorizationService) { }
 
   ngOnInit(): void {
-    this.sheltersService.getAllShelters().subscribe(result => {
-      this.sheltersList = result;
+    this.accommodationsService.getAllAccommodations().subscribe(result => {
+      this.accommodationsList = result;
       this.setCountryFlags();
     });
 
     this.subscription = this.applyFilterService.getFilters().subscribe(map => {
-      this.sheltersService.getSheltersFiltered(map).subscribe(result => {
-        this.sheltersList = result;
+      this.accommodationsService.getAccommodationsFiltered(map).subscribe(result => {
+        this.accommodationsList = result;
         this.setCountryFlags();
       })
     })
@@ -38,18 +38,17 @@ export class AccommodationsListComponent implements OnInit, OnDestroy {
     this.subscription!.unsubscribe();
   }
 
-  isShelterAlmostFull(shelter: Shelter): boolean {
-    return shelter.numberOfBookedSlots! / shelter.totalNumberOfSlots! > 0.75;
+  isAccommodationAlmostFull(accommodation: Accommodation): boolean {
+    return accommodation.numberOfBookedSlots! / accommodation.totalNumberOfSlots! > 0.75;
   }
 
   isUserAdmin(): boolean {
-    // return this.authorizationService.isUserAdmin();
-    return true;
+    return this.authorizationService.isUserAdmin();
   }
 
   setCountryFlags(): void {
-    this.sheltersList?.forEach(shelter => {
-      shelter.countryFlagImageSrc = this.matchCountryWithFlagImageSrc(shelter.city!.country!.name!);
+    this.accommodationsList?.forEach(accommodation => {
+      accommodation.countryFlagImageSrc = this.matchCountryWithFlagImageSrc(accommodation.city!.country!.name!);
     })
   }
 

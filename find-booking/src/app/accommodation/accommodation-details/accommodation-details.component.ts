@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Shelter} from "../../domain/Shelter";
-import {SheltersService} from "../../service/shelters.service";
+import {Accommodation} from "../../domain/Accommodation";
+import {AccommodationsService} from "../../service/accommodations.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthorizationService} from "../../service/authorization.service";
 
@@ -18,27 +18,27 @@ export interface Tile {
 })
 export class AccommodationDetailsComponent implements OnInit {
 
-  shelter: Shelter;
+  shelter: Accommodation;
   shelterId?: number;
 
   errorMessage: string = "";
 
-  constructor(private shelterService: SheltersService,
+  constructor(private shelterService: AccommodationsService,
               private activeRoute: ActivatedRoute,
               private authorizationService: AuthorizationService,
               private router: Router) {
-    this.shelter = new Shelter();
+    this.shelter = new Accommodation();
   }
 
   ngOnInit(): void {
     this.shelterId = this.activeRoute.snapshot.params['id'];
 
-    this.shelterService.getShelterById(this.shelterId!).subscribe(result => {
+    this.shelterService.getAccommodationById(this.shelterId!).subscribe(result => {
       this.shelter = result;
     })
   }
 
-  isShelterAlmostFull(shelter: Shelter): boolean {
+  isShelterAlmostFull(shelter: Accommodation): boolean {
     return shelter.numberOfBookedSlots! / shelter.totalNumberOfSlots! > 0.75;
   }
 
@@ -54,7 +54,7 @@ export class AccommodationDetailsComponent implements OnInit {
     }
 
     this.shelterService
-      .editShelter(this.cloneShelterWithoutPhoto(this.shelter))
+      .editAccommodation(this.cloneShelterWithoutPhoto(this.shelter))
       .subscribe((editedShelter) => {
         this.shelter = editedShelter;
         this.fakeReloadPage();
@@ -73,7 +73,7 @@ export class AccommodationDetailsComponent implements OnInit {
     }
 
     this.shelterService
-      .editShelter(this.cloneShelterWithoutPhoto(this.shelter))
+      .editAccommodation(this.cloneShelterWithoutPhoto(this.shelter))
       .subscribe((editedShelter) => {
           this.shelter = editedShelter;
           this.fakeReloadPage();
@@ -84,13 +84,13 @@ export class AccommodationDetailsComponent implements OnInit {
   }
 
   fakeReloadPage(): void {
-    this.router.navigateByUrl('shelter/' + this.shelter.shelterId);
+    this.router.navigateByUrl('shelter/' + this.shelter.accommodationId);
   }
 
-  cloneShelterWithoutPhoto(shelter: Shelter): Shelter {
-    let clonedShelter = new Shelter();
+  cloneShelterWithoutPhoto(shelter: Accommodation): Accommodation {
+    let clonedShelter = new Accommodation();
 
-    clonedShelter.shelterId = shelter.shelterId;
+    clonedShelter.accommodationId = shelter.accommodationId;
     clonedShelter.name = shelter.name;
     clonedShelter.phone = shelter.phone;
     clonedShelter.description = shelter.description;

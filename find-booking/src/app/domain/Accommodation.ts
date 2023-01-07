@@ -1,8 +1,8 @@
 import {City} from "./City";
 import {Photo} from "./Photo";
 
-export class Shelter {
-  shelterId?: number;
+export class Accommodation {
+  accommodationId?: number;
   name?: string;
   description?: string;
   phone?: string;
