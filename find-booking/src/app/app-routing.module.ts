@@ -5,7 +5,7 @@ import {RegisterComponent} from "./register/register.component";
 import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 import {HomePageComponent} from "./home-page/home-page.component";
 import {NewShelterComponent} from "./shelter/new-shelter/new-shelter.component";
-import {ShelterDetailsComponent} from "./shelter/shelter-details/shelter-details.component";
+import {BookingDetailsComponent} from "./shelter/booking-details/booking-details.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: 'welcome', component: WelcomePageComponent},
   {path: 'home', component: HomePageComponent},
   {path: 'new-shelter', component: NewShelterComponent},
-  {path: 'shelter/:id', component: ShelterDetailsComponent}
+  {path: 'shelter/:id', component: BookingDetailsComponent}
 ];
 
 @NgModule({

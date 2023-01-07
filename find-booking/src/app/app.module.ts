@@ -23,7 +23,7 @@ import {SheltersListComponent} from "./shelter/shelters-list/shelters-list.compo
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {NewShelterComponent} from "./shelter/new-shelter/new-shelter.component";
-import {ShelterDetailsComponent} from "./shelter/shelter-details/shelter-details.component";
+import {BookingDetailsComponent} from "./shelter/booking-details/booking-details.component";
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import {ShelterDetailsComponent} from "./shelter/shelter-details/shelter-details
     SidenavFilterComponent,
     SheltersListComponent,
     NewShelterComponent,
-    ShelterDetailsComponent
+    BookingDetailsComponent
   ],
   imports: [
     BrowserModule,
