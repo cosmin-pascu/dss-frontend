@@ -1,0 +1,28 @@
+.login-wrapper {
+  background-image: url("../../assets/images/login_page_background.jpeg");
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.example-full-width {
+  width: 300px;
+}
+
+.login-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+}
+
+.log-in-btn {
+  background-color: #3185FC;
+}
+
+.warning-message {
+  margin-top: 20px;
+  color: red;
+}

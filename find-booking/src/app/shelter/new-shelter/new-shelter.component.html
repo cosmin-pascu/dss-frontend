@@ -1,0 +1,134 @@
+<div class="add-shelter-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <div class="add-shelter-card">
+    <mat-card class="box">
+
+      <mat-card-header>
+        <mat-card-title>Add shelter</mat-card-title>
+      </mat-card-header>
+
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" id="name" name="name" [(ngModel)]="shelter.name">
+          </mat-form-field></td>
+        </tr></table>
+
+        <!---------------     PHONE    ---------------------------------->
+
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Telephone</mat-label>
+            <input type="tel" matInput id="telephone" name="telephone" [(ngModel)]="shelter.phone">
+            <mat-icon matSuffix>call</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <!---------------     DESCRIPTION    ---------------------------------->
+
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput id="description" name="description" [(ngModel)]="shelter.description"></textarea>
+          </mat-form-field>
+        </p>
+
+        <!---------------     COUNTRIES    ---------------------------------->
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Country</mat-label>
+            <input matInput
+                   aria-label="Country"
+                   [matAutocomplete]="auto"
+                   [formControl]="countryCtrl">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let country of filteredCountries | async" [value]="country.name">
+                <img class="example-option-img" aria-hidden [src]="country.flag" height="25">
+                <span>{{country.name}}</span>
+              </mat-option>
+            </mat-autocomplete>
+            <mat-icon matSuffix>gps_fixed</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <!---------------     Cities   ---------------------------------->
+
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill" (click)="filterCitiesBySelectedCountry()">
+            <mat-label>City</mat-label>
+            <input matInput
+                   aria-label="City"
+                   [matAutocomplete]="auto2"
+                   [formControl]="cityCtrl">
+            <mat-autocomplete #auto2="matAutocomplete">
+              <mat-option *ngFor="let city of filteredCities | async" [value]="city.name">
+                <img class="example-option-img" aria-hidden [src]="city.country!.flag" height="25">
+                <span>{{city.name}}</span>
+              </mat-option>
+            </mat-autocomplete>
+            <mat-icon matSuffix>location_city</mat-icon>
+          </mat-form-field>
+        </p>
+
+        <!---------------     Rooms   ---------------------------------->
+
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Number of booked slots</mat-label>
+            <input type="number" matInput id="bookedRooms" name="bookedRooms" [(ngModel)]="shelter.numberOfBookedSlots">
+            <mat-icon matSuffix>local_hotel</mat-icon>
+          </mat-form-field></td>
+
+
+          <td><mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Total number of slots</mat-label>
+            <input type="number" matInput id="totalRooms" name="totalRooms" [(ngModel)]="shelter.totalNumberOfSlots">
+            <mat-icon matSuffix>local_hotel</mat-icon>
+          </mat-form-field></td>
+        </tr></table>
+
+        <!---------------     Photo   ---------------------------------->
+
+        <p>
+          <button type="button" *ngIf="isPhotoSelected()" mat-raised-button color="primary" (click)="fileInput.click()">Choose Photo</button>
+          <button type="button" *ngIf="!isPhotoSelected()" mat-raised-button (click)="fileInput.click()">Choose Photo</button>
+          <input hidden (change)="onSelectFile($event)" #fileInput type="file" id="file">
+        </p>
+      </form>
+
+      <button mat-raised-button style="background-color:#3185FC;" class="add-btn" (click)="onSubmit()">Submit</button>
+      <br *ngIf="errorMessage">
+      <span class="warning-message"> {{errorMessage}} </span>
+
+    </mat-card>
+  </div>
+
+<!--  <div class="add-shelter-card">-->
+<!--    <mat-card class="box">-->
+<!--      <mat-card-header>-->
+<!--        <mat-card-title>Add shelter</mat-card-title>-->
+<!--      </mat-card-header>-->
+
+<!--      <form class="add-shelter-form">-->
+<!--        <mat-card-content>-->
+<!--          <mat-form-field class="example-full-width">-->
+<!--            <input type="text" id="email" name="email" matInput placeholder="Email">-->
+<!--          </mat-form-field>-->
+<!--        </mat-card-content>-->
+
+<!--        <mat-card-content>-->
+<!--          <mat-form-field class="example-full-width">-->
+<!--            <input type="password" id="password" name="password" matInput placeholder="Password">-->
+<!--          </mat-form-field>-->
+<!--        </mat-card-content>-->
+
+<!--        <button mat-stroked-button color="green" class="add-btn">Add</button>-->
+
+<!--&lt;!&ndash;        <br *ngIf="errorMessage">&ndash;&gt;-->
+<!--&lt;!&ndash;        <span class="warning-message"> {{errorMessage}} </span>&ndash;&gt;-->
+<!--      </form>-->
+<!--    </mat-card>-->
+<!--  </div>-->
+
+</div>

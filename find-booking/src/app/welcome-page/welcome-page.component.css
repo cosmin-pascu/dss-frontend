@@ -1,0 +1,22 @@
+.welcome_page_wrapper {
+  background-image: url("../../assets/images/welcome_page_background.jpg");
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.find-shelter-button {
+  padding-top: 200px;
+}
+
+.mat-raised-button {
+  font-size: 30px;
+  width: 300px;
+  height: 100px;
+  background-color: #3185FC;
+  color: white;
+}

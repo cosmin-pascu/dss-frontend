@@ -1,0 +1,70 @@
+/*.left-flex-container {*/
+/*  display: flex;*/
+/*  height: 300px;*/
+/*  flex-direction: column;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/
+
+/*.title {*/
+/*  margin-top: 100px;*/
+/*}*/
+.register-wrapper {
+  background-image: url("../../../assets/images/login_page_background.jpeg");
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.example-full-width {
+  width: 300px;
+}
+
+.register-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+}
+
+.mat-card-header {
+  margin-bottom: 20px;
+}
+
+.register-btn {
+  background-color: forestgreen;
+}
+
+.mat-card-title {
+  padding-left: 15px;
+}
+
+.img-responsive {
+  max-height: 350px;
+  object-fit: cover;
+}
+
+.slots {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.description {
+  max-width: 600px;
+  min-width: 400px;
+  font-size: large;
+}
+
+.free-slot-button {
+  background-color: white;
+  float: left;
+}
+
+.book-slot-button {
+  background-color: #3185FC;
+  float: right;
+}
+
+

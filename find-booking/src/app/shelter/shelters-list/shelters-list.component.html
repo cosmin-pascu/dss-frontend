@@ -1,0 +1,32 @@
+<div class="container-sm mt-5 mb-4">
+  <button *ngIf="isUserAdmin()" mat-raised-button color="primary" class="add-shelter-button" routerLink="/new-shelter">Add Shelter</button>
+
+  <div class="row g-4" *ngIf="sheltersList && sheltersList.length > 0">
+    <div class="col-md-3" *ngFor="let shelter of sheltersList">
+      <mat-card class="shelter-card">
+        <mat-card-header>
+          <div mat-card-avatar class="shelter-card-header-image"
+               style="background-image: url({{shelter.countryFlagImageSrc}});background-size: cover;"></div>
+          <mat-card-title>{{shelter.name}}</mat-card-title>
+          <mat-card-subtitle *ngIf="shelter.city && shelter.city.name">
+            {{shelter.city.name}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <img *ngIf="shelter.photo && shelter.photo.photoFile" mat-card-image class="img-responsive"
+             src="{{'data:image/jpg;base64,' + shelter.photo.photoFile}}" alt="">
+        <img *ngIf="!shelter.photo || !shelter.photo.photoFile" mat-card-image class="img-responsive"
+             src="../../../assets/images/no_image_available.jpg" alt="">
+        <mat-card-content>
+          <p class="description">{{shelter.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button routerLink="/shelter/{{shelter.shelterId}}">SEE MORE</button>
+          <span style="float: right; padding-top: 15px; color: red"
+                *ngIf="isShelterAlmostFull(shelter)"><mat-icon>local_hotel</mat-icon> {{shelter.numberOfBookedSlots}}/{{shelter.totalNumberOfSlots}}</span>
+          <span style="float: right; padding-top: 15px; color: green"
+                *ngIf="!isShelterAlmostFull(shelter)"><mat-icon>local_hotel</mat-icon> {{shelter.numberOfBookedSlots}}/{{shelter.totalNumberOfSlots}}</span>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

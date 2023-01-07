@@ -1,0 +1,11 @@
+<mat-toolbar  class="app-header">
+  <div><a href="#" target="_self" class="positronx">Find A Shelter</a></div>
+  <span class="nav-tool-items">
+    <a *ngIf="!isUserLoggedIn()" mat-button routerLink="login" routerLinkActive="active">Login</a>
+    <a *ngIf="!isUserLoggedIn()" mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+    <button *ngIf="isUserLoggedIn()" mat-button style="color: white" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </button>
+  </span>
+</mat-toolbar>

@@ -1,0 +1,73 @@
+<mat-sidenav-container>
+  <mat-sidenav class="mat-elevation-z8">
+    <button mat-button class="menu-button">
+      <mat-icon>filter_list</mat-icon>
+      <span>Filter</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <!--      Country Filter   -->
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>gps_fixed</mat-icon>
+          <span>Country</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Country</mat-label>
+          <input matInput
+                 aria-label="Country"
+                 [matAutocomplete]="auto"
+                 [formControl]="countryCtrl">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let country of filteredCountries | async" [value]="country.name">
+              <img class="example-option-img" aria-hidden [src]="country.flag" height="25">
+              <span>{{country.name}}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </mat-expansion-panel>
+
+    <br>
+
+<!--    City Filter-->
+    <mat-expansion-panel hideToggle (click)="filterCitiesBySelectedCountry()">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>location_city</mat-icon>
+          <span>City</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput
+                 aria-label="City"
+                 [matAutocomplete]="auto2"
+                 [formControl]="cityCtrl">
+          <mat-autocomplete #auto2="matAutocomplete">
+            <mat-option *ngFor="let city of filteredCities | async" [value]="city.name">
+              <img class="example-option-img" aria-hidden [src]="city.country!.flag" height="25">
+              <span>{{city.name}}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </form>
+    </mat-expansion-panel>
+
+    <button mat-raised-button class="apply-filter-button" (click)="onApplyFilter()">Apply</button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button">
+      <mat-icon>help</mat-icon>
+      <span>Help</span>
+    </button>
+  </mat-sidenav>
+</mat-sidenav-container>

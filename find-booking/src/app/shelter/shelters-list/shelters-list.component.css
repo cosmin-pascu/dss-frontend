@@ -1,0 +1,18 @@
+.img-responsive {
+  height: 200px;
+  object-fit: cover;
+}
+
+.description {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  height: 100px;
+}
+
+.add-shelter-button {
+  margin-top: -20px;
+  margin-bottom: 10px;
+  background-color: #3185FC;
+}

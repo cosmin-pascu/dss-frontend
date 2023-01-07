@@ -1,0 +1,53 @@
+<div class="register-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <div class="register-card">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>{{shelter.name}}</mat-card-title>
+        <mat-card-subtitle>{{shelter.city!.name!}}, {{shelter.city!.country!.name!}}</mat-card-subtitle>
+        <div class="slots">
+          <span style=" padding-top: 15px; color: red"
+                *ngIf="isShelterAlmostFull(shelter)"><mat-icon>local_hotel</mat-icon> {{shelter.numberOfBookedSlots}}/{{shelter.totalNumberOfSlots}}</span>
+          <span style=" padding-top: 15px; color: green"
+                *ngIf="!isShelterAlmostFull(shelter)"><mat-icon>local_hotel</mat-icon> {{shelter.numberOfBookedSlots}}/{{shelter.totalNumberOfSlots}}</span>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="shelter-image">
+          <img *ngIf="shelter.photo && shelter.photo.photoFile" mat-card-image class="img-responsive"
+               src="{{'data:image/jpg;base64,' + shelter.photo.photoFile}}" alt="">
+          <img *ngIf="!shelter.photo || !shelter.photo.photoFile" mat-card-image class="img-responsive"
+               src="../../../assets/images/no_image_available.jpg" alt="">
+        </div>
+      </mat-card-content>
+
+      <mat-card-content>
+        <div class="description">
+          <h1 style="text-decoration: underline; opacity: 0.4;">Description</h1>
+          <p>{{shelter.description}}</p>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content>
+        <br>
+        <mat-card style="max-width: 300px; margin: 0 auto;">
+          <mat-card-content>
+            <mat-icon>contact_phone</mat-icon>
+            {{shelter.phone}}
+          </mat-card-content>
+        </mat-card>
+        <br>
+        <span class="warning-message"> {{errorMessage}} </span>
+        <br *ngIf="errorMessage">
+      </mat-card-content>
+
+      <mat-card-content *ngIf="isUserAdmin()">
+        <button class="free-slot-button" mat-raised-button (click)="onFreeSpot()">Free Slot</button>
+        <button class="book-slot-button" mat-raised-button (click)="onBookSpot()">Book Slot</button>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+
+</div>
