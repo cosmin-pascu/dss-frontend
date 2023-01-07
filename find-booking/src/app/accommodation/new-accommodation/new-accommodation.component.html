@@ -1,17 +1,17 @@
-<div class="add-shelter-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<div class="add-accommodation-wrapper" fxLayout="row" fxLayoutAlign="center center">
 
-  <div class="add-shelter-card">
+  <div class="add-accommodation-card">
     <mat-card class="box">
 
       <mat-card-header>
-        <mat-card-title>Add shelter</mat-card-title>
+        <mat-card-title>Add accommodation</mat-card-title>
       </mat-card-header>
 
       <form class="example-form">
         <table class="example-full-width" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Name</mat-label>
-            <input matInput type="text" id="name" name="name" [(ngModel)]="shelter.name">
+            <input matInput type="text" id="name" name="name" [(ngModel)]="accommodation.name">
           </mat-form-field></td>
         </tr></table>
 
@@ -20,7 +20,7 @@
         <p>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Telephone</mat-label>
-            <input type="tel" matInput id="telephone" name="telephone" [(ngModel)]="shelter.phone">
+            <input type="tel" matInput id="telephone" name="telephone" [(ngModel)]="accommodation.phone">
             <mat-icon matSuffix>call</mat-icon>
           </mat-form-field>
         </p>
@@ -30,7 +30,7 @@
         <p>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Description</mat-label>
-            <textarea matInput id="description" name="description" [(ngModel)]="shelter.description"></textarea>
+            <textarea matInput id="description" name="description" [(ngModel)]="accommodation.description"></textarea>
           </mat-form-field>
         </p>
 
@@ -76,14 +76,14 @@
         <table class="example-full-width" cellspacing="0"><tr>
           <td><mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Number of booked slots</mat-label>
-            <input type="number" matInput id="bookedRooms" name="bookedRooms" [(ngModel)]="shelter.numberOfBookedSlots">
+            <input type="number" matInput id="bookedRooms" name="bookedRooms" [(ngModel)]="accommodation.numberOfBookedSlots">
             <mat-icon matSuffix>local_hotel</mat-icon>
           </mat-form-field></td>
 
 
           <td><mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Total number of slots</mat-label>
-            <input type="number" matInput id="totalRooms" name="totalRooms" [(ngModel)]="shelter.totalNumberOfSlots">
+            <input type="number" matInput id="totalRooms" name="totalRooms" [(ngModel)]="accommodation.totalNumberOfSlots">
             <mat-icon matSuffix>local_hotel</mat-icon>
           </mat-form-field></td>
         </tr></table>
@@ -103,32 +103,5 @@
 
     </mat-card>
   </div>
-
-<!--  <div class="add-shelter-card">-->
-<!--    <mat-card class="box">-->
-<!--      <mat-card-header>-->
-<!--        <mat-card-title>Add shelter</mat-card-title>-->
-<!--      </mat-card-header>-->
-
-<!--      <form class="add-shelter-form">-->
-<!--        <mat-card-content>-->
-<!--          <mat-form-field class="example-full-width">-->
-<!--            <input type="text" id="email" name="email" matInput placeholder="Email">-->
-<!--          </mat-form-field>-->
-<!--        </mat-card-content>-->
-
-<!--        <mat-card-content>-->
-<!--          <mat-form-field class="example-full-width">-->
-<!--            <input type="password" id="password" name="password" matInput placeholder="Password">-->
-<!--          </mat-form-field>-->
-<!--        </mat-card-content>-->
-
-<!--        <button mat-stroked-button color="green" class="add-btn">Add</button>-->
-
-<!--&lt;!&ndash;        <br *ngIf="errorMessage">&ndash;&gt;-->
-<!--&lt;!&ndash;        <span class="warning-message"> {{errorMessage}} </span>&ndash;&gt;-->
-<!--      </form>-->
-<!--    </mat-card>-->
-<!--  </div>-->
 
 </div>

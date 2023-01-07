@@ -25,7 +25,7 @@ export class NewAccommodationComponent implements OnInit {
   cities?: City[];
   filteredCities?: Observable<City[]>;
 
-  shelter: Accommodation = new Accommodation();
+  accommodation: Accommodation = new Accommodation();
 
   photoSelected: boolean = false;
 
@@ -33,7 +33,7 @@ export class NewAccommodationComponent implements OnInit {
 
   constructor(private countryService: CountryService,
               private cityService: CityService,
-              private shelterService: AccommodationsService,
+              private accommodationsService: AccommodationsService,
               private router: Router
   ) { }
 
@@ -53,7 +53,7 @@ export class NewAccommodationComponent implements OnInit {
 
   onSelectFile($event: any) {
     if ($event != null && $event.target.files.length > 0) {
-      this.shelter.photo!.photoFile = $event.target.files[0];
+      this.accommodation.photo!.photoFile = $event.target.files[0];
       this.photoSelected = true;
     }
   }
@@ -63,7 +63,7 @@ export class NewAccommodationComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (!this.setCityForShelter()) {
+    if (!this.setCityForAccommodation()) {
       this.errorMessage = 'Please select a city';
       return;
     }
@@ -73,11 +73,11 @@ export class NewAccommodationComponent implements OnInit {
       return;
     }
 
-    this.shelterService
-      .addAccommodation(this.cloneShelterWithoutPhoto(this.shelter))
-      .subscribe((savedShelter) => {
-        if (this.shelter.photo?.photoFile && savedShelter.accommodationId) {
-          this.uploadPhoto(savedShelter.accommodationId, this.shelter.photo.photoFile);
+    this.accommodationsService
+      .addAccommodation(this.cloneAccommodationWithoutPhoto(this.accommodation))
+      .subscribe((savedAccommodation) => {
+        if (this.accommodation.photo?.photoFile && savedAccommodation.accommodationId) {
+          this.uploadPhoto(savedAccommodation.accommodationId, this.accommodation.photo.photoFile);
           this.redirectToHomePage();
         } else {
           this.redirectToHomePage();
@@ -85,22 +85,22 @@ export class NewAccommodationComponent implements OnInit {
       })
   }
 
-  cloneShelterWithoutPhoto(shelter: Accommodation): Accommodation {
-    let clonedShelter = new Accommodation();
+  cloneAccommodationWithoutPhoto(accommodation: Accommodation): Accommodation {
+    let clonedAccommodation = new Accommodation();
 
-    clonedShelter.name = shelter.name;
-    clonedShelter.phone = shelter.phone;
-    clonedShelter.description = shelter.description;
-    clonedShelter.city = shelter.city;
-    clonedShelter.numberOfBookedSlots = shelter.numberOfBookedSlots;
-    clonedShelter.totalNumberOfSlots = shelter.totalNumberOfSlots;
+    clonedAccommodation.name = accommodation.name;
+    clonedAccommodation.phone = accommodation.phone;
+    clonedAccommodation.description = accommodation.description;
+    clonedAccommodation.city = accommodation.city;
+    clonedAccommodation.numberOfBookedSlots = accommodation.numberOfBookedSlots;
+    clonedAccommodation.totalNumberOfSlots = accommodation.totalNumberOfSlots;
 
-    return clonedShelter;
+    return clonedAccommodation;
   }
 
-  uploadPhoto(shelterId: number, photo: Blob): void {
-    this.shelterService
-      .uploadPhotoToAccommodation(shelterId, photo)
+  uploadPhoto(accommodationId: number, photo: Blob): void {
+    this.accommodationsService
+      .uploadPhotoToAccommodation(accommodationId, photo)
       .subscribe(
         () => {
           this.redirectToHomePage();
@@ -113,15 +113,15 @@ export class NewAccommodationComponent implements OnInit {
   }
 
   validateFields(): boolean {
-    return this.shelter.name != null && this.shelter.phone != null && this.shelter.totalNumberOfSlots != null &&
-      this.shelter.numberOfBookedSlots != null && this.shelter.description != null;
+    return this.accommodation.name != null && this.accommodation.phone != null && this.accommodation.totalNumberOfSlots != null &&
+      this.accommodation.numberOfBookedSlots != null && this.accommodation.description != null;
   }
 
-  setCityForShelter(): boolean {
+  setCityForAccommodation(): boolean {
     if (this.cityCtrl.value) {
       for (let city of this.cities!) {
         if (city.name === this.cityCtrl.value) {
-          this.shelter.city = city;
+          this.accommodation.city = city;
           return true;
         }
       }
