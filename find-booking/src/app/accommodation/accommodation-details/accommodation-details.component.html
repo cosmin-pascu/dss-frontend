@@ -46,7 +46,7 @@
         <button class="contact-wrapper" mat-raised-button>
           <mat-icon>contact_phone</mat-icon>
           {{accommodation.phone}}</button>
-        <button class="book-slot-button" mat-raised-button (click)="onBookSpot()">Book Slot</button>
+        <button class="book-slot-button" mat-raised-button routerLink="/book/{{accommodation.accommodationId}}">Book</button>
       </mat-card-content>
 
     </mat-card>

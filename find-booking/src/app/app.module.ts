@@ -24,6 +24,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {NewAccommodationComponent} from "./accommodation/new-accommodation/new-accommodation.component";
 import {AccommodationDetailsComponent} from "./accommodation/accommodation-details/accommodation-details.component";
+import {BookComponent} from "./book/book.component";
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {AccommodationDetailsComponent} from "./accommodation/accommodation-detai
     SidenavFilterComponent,
     AccommodationsListComponent,
     NewAccommodationComponent,
-    AccommodationDetailsComponent
+    AccommodationDetailsComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,
