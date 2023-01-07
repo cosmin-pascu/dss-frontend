@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyBvcn8kdAxYwerOh6lKb0kWYM2FfNTohSk",
-    authDomain: "refugees-shelter.firebaseapp.com",
-    projectId: "refugees-shelter",
-    storageBucket: "refugees-shelter.appspot.com",
-    messagingSenderId: "108712969614",
-    appId: "1:108712969614:web:ca2db1f092aaca621650df",
-    measurementId: "G-B7YT5LBEY1"
+    apiKey: "AIzaSyDnG7n4MYpM1dHpBKLay1AWhJP_mzgMZa4",
+    authDomain: "find-booking.firebaseapp.com",
+    projectId: "find-booking",
+    storageBucket: "find-booking.appspot.com",
+    messagingSenderId: "366299772111",
+    appId: "1:366299772111:web:4598a64a7ea9fde44233ba",
+    measurementId: "G-MW9WHPDXC2"
   }
 };
 
