@@ -24,7 +24,9 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {NewAccommodationComponent} from "./accommodation/new-accommodation/new-accommodation.component";
 import {AccommodationDetailsComponent} from "./accommodation/accommodation-details/accommodation-details.component";
-import {BookComponent} from "./book/book.component";
+import {NewBookingComponent} from "./new-booking/new-booking.component";
+import {MatNativeDateModule} from "@angular/material/core";
+import {DatePipe} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ import {BookComponent} from "./book/book.component";
     AccommodationsListComponent,
     NewAccommodationComponent,
     AccommodationDetailsComponent,
-    BookComponent
+    NewBookingComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +57,7 @@ import {BookComponent} from "./book/book.component";
     MatDividerModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
+    MatNativeDateModule
   ],
   providers: [
     {
@@ -62,7 +65,8 @@ import {BookComponent} from "./book/book.component";
       useClass: AuthInterceptor,
       multi: true
     },
-    HttpClientModule
+    HttpClientModule,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

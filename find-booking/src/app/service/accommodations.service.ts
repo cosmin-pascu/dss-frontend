@@ -2,6 +2,11 @@ import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {map, Observable} from "rxjs";
 import {Accommodation} from "../domain/Accommodation";
+import {newArray} from "@angular/compiler/src/util";
+import {City} from "../domain/City";
+import {Country} from "../domain/Country";
+import { of } from 'rxjs';
+import {MockService} from "./mock.service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +14,16 @@ import {Accommodation} from "../domain/Accommodation";
 export class AccommodationsService {
   private apiBaseUrl = 'http://localhost:8080/refugees-shelter/';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private mockService: MockService) {
   }
 
   getAllAccommodations(): Observable<Array<Accommodation>> {
     const url = this.apiBaseUrl + 'accommodations';
 
-    return this.http.get<Array<Accommodation>>(url);
+    // return this.http.get<Array<Accommodation>>(url);
+
+    return of(this.mockService.mockAccommodations(4));
   }
 
   getAccommodationsFiltered(filtersMap: Map<string, string>): Observable<Array<Accommodation>> {
@@ -27,12 +35,13 @@ export class AccommodationsService {
   getAccommodationById(accommodationId: number): Observable<Accommodation> {
     const url = this.apiBaseUrl + 'accommodations/' + accommodationId;
 
-    return this.http.get<Accommodation>(url)
-      .pipe(
-        map((response: Accommodation) => {
-          return Object.assign(new Accommodation(), response);
-        }
-        ));
+    // return this.http.get<Accommodation>(url)
+    //   .pipe(
+    //     map((response: Accommodation) => {
+    //       return Object.assign(new Accommodation(), response);
+    //     }
+    //     ));
+    return of(this.mockService.mockAccommodation(1));
   }
 
   addAccommodation(accommodation: Accommodation): Observable<Accommodation> {

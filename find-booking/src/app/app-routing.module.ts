@@ -6,7 +6,7 @@ import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
 import {HomePageComponent} from "./home-page/home-page.component";
 import {NewAccommodationComponent} from "./accommodation/new-accommodation/new-accommodation.component";
 import {AccommodationDetailsComponent} from "./accommodation/accommodation-details/accommodation-details.component";
-import {BookComponent} from "./book/book.component";
+import {NewBookingComponent} from "./new-booking/new-booking.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'welcome', pathMatch: 'full'},
@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path: 'new-accommodation', component: NewAccommodationComponent},
   {path: 'accommodation/:id', component: AccommodationDetailsComponent},
-  {path: 'book/:id', component: BookComponent}
+  {path: 'new-booking/:id', component: NewBookingComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,48 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+
+
+.add-booking-wrapper {
+  background-image: url("../../assets/images/login_page_background.jpeg");
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.other-details-field {
+  width: 100%;
+}
+
+.example-full-width {
+  width: 300px;
+}
+
+.add-booking-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+}
+
+.add-btn-btn {
+  background-color: forestgreen;
+}
+
+.warning-message {
+  margin-top: 20px;
+  color: red;
+}
+

@@ -79,7 +79,7 @@ export class AccommodationDetailsComponent implements OnInit {
           this.fakeReloadPage();
         },
         (error) => {
-          this.errorMessage = "Could not book spot. Please try again."
+          this.errorMessage = "Could not new-booking spot. Please try again."
         })
   }
 

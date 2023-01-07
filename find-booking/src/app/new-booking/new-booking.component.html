@@ -1,0 +1,59 @@
+<div class="add-booking-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <div class="add-booking-card">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Make a Booking</mat-card-title>
+      </mat-card-header>
+
+      <form class="booking-form">
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Rooms</mat-label>
+            <input type="number" matInput id="bookedRooms" name="bookedRooms" [(ngModel)]="booking.rooms">
+            <mat-icon matSuffix>local_hotel</mat-icon>
+          </mat-form-field></td>
+
+
+          <td><mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Number of people</mat-label>
+            <input type="number" matInput id="numberOfPeople" name="numberOfPeople" [(ngModel)]="booking.numberOfPeople">
+            <mat-icon matSuffix>local_hotel</mat-icon>
+          </mat-form-field></td>
+        </tr></table>
+
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Check in</mat-label>
+              <input matInput [matDatepicker]="pickerCheckInDate" [(ngModel)]="booking.checkInDate" name="checkInDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="pickerCheckInDate"></mat-datepicker-toggle>
+              <mat-datepicker #pickerCheckInDate></mat-datepicker>
+          </mat-form-field></td>
+
+          <td><mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Check out</mat-label>
+              <input matInput [matDatepicker]="pickerCheckOutDate" [(ngModel)]="booking.checkOutDate" name="checkOutDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="pickerCheckOutDate"></mat-datepicker-toggle>
+              <mat-datepicker #pickerCheckOutDate></mat-datepicker>
+            </mat-form-field></td>
+        </tr></table>
+
+        <br>
+        <p>
+          <mat-form-field class="other-details-field" appearance="fill">
+            <mat-label>Other Details</mat-label>
+            <textarea matInput id="otherDetails" name="otherDetails" [(ngModel)]="booking.otherDetails"></textarea>
+          </mat-form-field>
+        </p>
+
+        <button mat-raised-button style="background-color:#3185FC;" class="add-btn" (click)="onSubmit()">Submit</button>
+
+<!--        <br *ngIf="errorMessage">-->
+<!--        <span class="warning-message"> {{errorMessage}} </span>-->
+      </form>
+    </mat-card>
+  </div>
+
+</div>
