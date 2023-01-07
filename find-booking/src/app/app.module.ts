@@ -19,7 +19,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
 import {SidenavFilterComponent} from "./sidenav-filter/sidenav-filter.component";
-import {SheltersListComponent} from "./shelter/shelters-list/shelters-list.component";
+import {BookingsListComponent} from "./shelter/bookings-list/bookings-list.component";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {NewBookingComponent} from "./shelter/new-booking/new-booking.component";
@@ -34,7 +34,7 @@ import {BookingDetailsComponent} from "./shelter/booking-details/booking-details
     WelcomePageComponent,
     HomePageComponent,
     SidenavFilterComponent,
-    SheltersListComponent,
+    BookingsListComponent,
     NewBookingComponent,
     BookingDetailsComponent
   ],

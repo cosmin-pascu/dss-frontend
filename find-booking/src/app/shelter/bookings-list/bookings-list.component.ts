@@ -6,11 +6,11 @@ import {Subscription} from "rxjs";
 import {AuthorizationService} from "../../service/authorization.service";
 
 @Component({
-  selector: 'app-shelters-list',
-  templateUrl: './shelters-list.component.html',
-  styleUrls: ['./shelters-list.component.css']
+  selector: 'app-bookings-list',
+  templateUrl: './bookings-list.component.html',
+  styleUrls: ['./bookings-list.component.css']
 })
-export class SheltersListComponent implements OnInit, OnDestroy {
+export class BookingsListComponent implements OnInit, OnDestroy {
 
   sheltersList: Shelter[] | undefined;
   subscription?: Subscription;
