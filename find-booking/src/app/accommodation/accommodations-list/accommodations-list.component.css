@@ -1,6 +1,5 @@
 .img-responsive {
   height: 200px;
-  object-fit: cover;
 }
 
 .description {
@@ -15,4 +14,12 @@
   margin-top: -20px;
   margin-bottom: 10px;
   background-color: #3185FC;
+}
+
+.mat-card-title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 20px;
 }

@@ -46,9 +46,10 @@
   font-size: large;
 }
 
-.free-slot-button {
+.contact-wrapper {
   background-color: white;
   float: left;
+  pointer-events: none;
 }
 
 .book-slot-button {

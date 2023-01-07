@@ -11,6 +11,7 @@ export class Accommodation {
   photo?: Photo;
   city?: City;
   countryFlagImageSrc?: string;
+  address?: string;
 
   constructor() {
     this.photo = new Photo();
