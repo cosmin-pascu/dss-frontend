@@ -18,28 +18,28 @@ export interface Tile {
 })
 export class AccommodationDetailsComponent implements OnInit {
 
-  shelter: Accommodation;
-  shelterId?: number;
+  accommodation: Accommodation;
+  accommodationId?: number;
 
   errorMessage: string = "";
 
-  constructor(private shelterService: AccommodationsService,
+  constructor(private accommodationsService: AccommodationsService,
               private activeRoute: ActivatedRoute,
               private authorizationService: AuthorizationService,
               private router: Router) {
-    this.shelter = new Accommodation();
+    this.accommodation = new Accommodation();
   }
 
   ngOnInit(): void {
-    this.shelterId = this.activeRoute.snapshot.params['id'];
+    this.accommodationId = this.activeRoute.snapshot.params['id'];
 
-    this.shelterService.getAccommodationById(this.shelterId!).subscribe(result => {
-      this.shelter = result;
+    this.accommodationsService.getAccommodationById(this.accommodationId!).subscribe(result => {
+      this.accommodation = result;
     })
   }
 
-  isShelterAlmostFull(shelter: Accommodation): boolean {
-    return shelter.numberOfBookedSlots! / shelter.totalNumberOfSlots! > 0.75;
+  isAccommodationAlmostFull(accommodation: Accommodation): boolean {
+    return accommodation.numberOfBookedSlots! / accommodation.totalNumberOfSlots! > 0.75;
   }
 
   isUserAdmin(): boolean {
@@ -47,16 +47,16 @@ export class AccommodationDetailsComponent implements OnInit {
   }
 
   onFreeSpot(): void {
-    this.shelter.numberOfBookedSlots! -= 1;
-    if (this.shelter.numberOfBookedSlots! < 0) {
+    this.accommodation.numberOfBookedSlots! -= 1;
+    if (this.accommodation.numberOfBookedSlots! < 0) {
       this.errorMessage = "There were no left slots to free";
       return;
     }
 
-    this.shelterService
-      .editAccommodation(this.cloneShelterWithoutPhoto(this.shelter))
-      .subscribe((editedShelter) => {
-        this.shelter = editedShelter;
+    this.accommodationsService
+      .editAccommodation(this.cloneAccommodationWithoutPhoto(this.accommodation))
+      .subscribe((editedAccommodation) => {
+        this.accommodation = editedAccommodation;
         this.fakeReloadPage();
       },
       (error) => {
@@ -65,17 +65,17 @@ export class AccommodationDetailsComponent implements OnInit {
   }
 
   onBookSpot(): void {
-    this.shelter.numberOfBookedSlots! += 1;
+    this.accommodation.numberOfBookedSlots! += 1;
 
-    if (this.shelter.numberOfBookedSlots! > this.shelter.totalNumberOfSlots!) {
+    if (this.accommodation.numberOfBookedSlots! > this.accommodation.totalNumberOfSlots!) {
       this.errorMessage = "All the slots are already booked.";
       return;
     }
 
-    this.shelterService
-      .editAccommodation(this.cloneShelterWithoutPhoto(this.shelter))
-      .subscribe((editedShelter) => {
-          this.shelter = editedShelter;
+    this.accommodationsService
+      .editAccommodation(this.cloneAccommodationWithoutPhoto(this.accommodation))
+      .subscribe((editedAccommodation) => {
+          this.accommodation = editedAccommodation;
           this.fakeReloadPage();
         },
         (error) => {
@@ -84,21 +84,21 @@ export class AccommodationDetailsComponent implements OnInit {
   }
 
   fakeReloadPage(): void {
-    this.router.navigateByUrl('shelter/' + this.shelter.accommodationId);
+    this.router.navigateByUrl('accommodation/' + this.accommodation.accommodationId);
   }
 
-  cloneShelterWithoutPhoto(shelter: Accommodation): Accommodation {
-    let clonedShelter = new Accommodation();
+  cloneAccommodationWithoutPhoto(accommodation: Accommodation): Accommodation {
+    let clonedAccommodation = new Accommodation();
 
-    clonedShelter.accommodationId = shelter.accommodationId;
-    clonedShelter.name = shelter.name;
-    clonedShelter.phone = shelter.phone;
-    clonedShelter.description = shelter.description;
-    clonedShelter.city = shelter.city;
-    clonedShelter.numberOfBookedSlots = shelter.numberOfBookedSlots;
-    clonedShelter.totalNumberOfSlots = shelter.totalNumberOfSlots;
+    clonedAccommodation.accommodationId = accommodation.accommodationId;
+    clonedAccommodation.name = accommodation.name;
+    clonedAccommodation.phone = accommodation.phone;
+    clonedAccommodation.description = accommodation.description;
+    clonedAccommodation.city = accommodation.city;
+    clonedAccommodation.numberOfBookedSlots = accommodation.numberOfBookedSlots;
+    clonedAccommodation.totalNumberOfSlots = accommodation.totalNumberOfSlots;
 
-    return clonedShelter;
+    return clonedAccommodation;
   }
 
 }
