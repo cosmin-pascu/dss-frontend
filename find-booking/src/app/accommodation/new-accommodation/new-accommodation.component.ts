@@ -10,11 +10,11 @@ import {SheltersService} from "../../service/shelters.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-new-booking',
-  templateUrl: './new-booking.component.html',
-  styleUrls: ['./new-booking.component.css']
+  selector: 'app-new-accommodation',
+  templateUrl: './new-accommodation.component.html',
+  styleUrls: ['./new-accommodation.component.css']
 })
-export class NewBookingComponent implements OnInit {
+export class NewAccommodationComponent implements OnInit {
 
   countryCtrl = new FormControl();
   cityCtrl = new FormControl();

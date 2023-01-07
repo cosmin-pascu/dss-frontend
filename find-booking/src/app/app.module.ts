@@ -19,11 +19,11 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
 import {SidenavFilterComponent} from "./sidenav-filter/sidenav-filter.component";
-import {BookingsListComponent} from "./shelter/bookings-list/bookings-list.component";
+import {AccommodationsListComponent} from "./accommodation/accommodations-list/accommodations-list.component";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
-import {NewBookingComponent} from "./shelter/new-booking/new-booking.component";
-import {BookingDetailsComponent} from "./shelter/booking-details/booking-details.component";
+import {NewAccommodationComponent} from "./accommodation/new-accommodation/new-accommodation.component";
+import {AccommodationDetailsComponent} from "./accommodation/accommodation-details/accommodation-details.component";
 
 @NgModule({
   declarations: [
@@ -34,9 +34,9 @@ import {BookingDetailsComponent} from "./shelter/booking-details/booking-details
     WelcomePageComponent,
     HomePageComponent,
     SidenavFilterComponent,
-    BookingsListComponent,
-    NewBookingComponent,
-    BookingDetailsComponent
+    AccommodationsListComponent,
+    NewAccommodationComponent,
+    AccommodationDetailsComponent
   ],
   imports: [
     BrowserModule,

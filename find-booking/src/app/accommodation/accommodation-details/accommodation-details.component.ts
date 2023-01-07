@@ -12,11 +12,11 @@ export interface Tile {
 }
 
 @Component({
-  selector: 'app-booking-details',
-  templateUrl: './booking-details.component.html',
-  styleUrls: ['./booking-details.component.css']
+  selector: 'app-accommodation-details',
+  templateUrl: './accommodation-details.component.html',
+  styleUrls: ['./accommodation-details.component.css']
 })
-export class BookingDetailsComponent implements OnInit {
+export class AccommodationDetailsComponent implements OnInit {
 
   shelter: Shelter;
   shelterId?: number;
