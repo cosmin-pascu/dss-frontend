@@ -22,7 +22,7 @@ import {SidenavFilterComponent} from "./sidenav-filter/sidenav-filter.component"
 import {SheltersListComponent} from "./shelter/shelters-list/shelters-list.component";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
-import {NewShelterComponent} from "./shelter/new-shelter/new-shelter.component";
+import {NewBookingComponent} from "./shelter/new-booking/new-booking.component";
 import {BookingDetailsComponent} from "./shelter/booking-details/booking-details.component";
 
 @NgModule({
@@ -35,7 +35,7 @@ import {BookingDetailsComponent} from "./shelter/booking-details/booking-details
     HomePageComponent,
     SidenavFilterComponent,
     SheltersListComponent,
-    NewShelterComponent,
+    NewBookingComponent,
     BookingDetailsComponent
   ],
   imports: [
