@@ -77,7 +77,7 @@ export class MockService {
     let review = new Review();
 
     review.reviewId = x;
-    review.user = this.mockUser();
+    review.user = this.mockUser(x);
     review.accommodationId = 0;
     review.stars = x;
     review.comment = this.generateComment(x);
@@ -96,12 +96,26 @@ export class MockService {
     return comment;
   }
 
-  mockUser(): User {
+  mockUsers(n: number): Array<User> {
+    let users = [];
+
+    for (let i = 0; i < n; i ++) {
+      users.push(this.mockUser(i))
+    }
+
+    return users;
+  }
+
+  mockUser(x: number): User {
     let user = new User();
 
     user.userId = 1;
     user.email = 'someEmail@email.com';
-    user.roleType = RoleType.ADMIN;
+    if (x % 2 == 0) {
+      user.roleType = RoleType.ADMIN;
+    } else {
+      user.roleType = RoleType.GUEST;
+    }
     user.firsName = 'Raul';
     user.lastName = 'Gonzalez';
 

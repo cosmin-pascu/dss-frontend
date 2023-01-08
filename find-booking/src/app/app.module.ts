@@ -31,6 +31,7 @@ import {ReviewsComponent} from "./reviews/reviews.component";
 import {ReviewDialogComponent} from "./dialog/review-dialog/review-dialog.component";
 import {NgxMaterialRatingModule} from "ngx-material-rating";
 import {MatDialogModule} from "@angular/material/dialog";
+import {UsersManagementComponent} from "./users-management/users-management.component";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     AccommodationDetailsComponent,
     NewBookingComponent,
     ReviewsComponent,
-    ReviewDialogComponent
+    ReviewDialogComponent,
+    UsersManagementComponent
   ],
   imports: [
     BrowserModule,

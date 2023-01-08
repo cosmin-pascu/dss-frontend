@@ -3,6 +3,9 @@ import {HttpClient} from "@angular/common/http";
 import {AddUser} from "../domain/AddUser";
 import {Observable} from "rxjs";
 import {User} from "../domain/User";
+import {MockService} from "./mock.service";
+import { of } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,8 @@ import {User} from "../domain/User";
 export class UserService {
   private apiBaseUrl = 'http://localhost:8080/refugees-shelter/users';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private mockService: MockService) {
   }
 
   createUser(user: AddUser): Observable<any> {
@@ -25,4 +29,16 @@ export class UserService {
     return this.http.get(url);
   }
 
+  getAllUsers(): Observable<Array<User>> {
+    const url = this.apiBaseUrl;
+
+    return of(this.mockService.mockUsers(5));
+    // return this.http.get<Array<User>>(url);
+  }
+
+  changeUserRole(user: User): Observable<any> {
+    const url = this.apiBaseUrl + '/change-role'
+
+    return this.http.put(url, user);
+  }
 }
