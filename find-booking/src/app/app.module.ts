@@ -30,6 +30,7 @@ import {DatePipe} from "@angular/common";
 import {ReviewsComponent} from "./reviews/reviews.component";
 import {ReviewDialogComponent} from "./dialog/review-dialog/review-dialog.component";
 import {NgxMaterialRatingModule} from "ngx-material-rating";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import {NgxMaterialRatingModule} from "ngx-material-rating";
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatNativeDateModule,
-    NgxMaterialRatingModule
+    NgxMaterialRatingModule,
+    MatDialogModule
   ],
   providers: [
     {

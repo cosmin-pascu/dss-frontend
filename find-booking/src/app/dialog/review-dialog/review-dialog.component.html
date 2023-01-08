@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Enter a review</h1>
+<div mat-dialog-content>
+  <span>Rate your experience in this ski resort</span>
+  <div class="rating">
+    <div>
+      <ngx-material-rating style="color: #FFD700" [(ngModel)]="rating.value" [max]="rating.max">
+      </ngx-material-rating>
+    </div>
+  </div>
+  <br>
+  <span>Add a comment if you like</span>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Comment</mat-label>
+    <textarea matInput id="comment" name="comment" [(ngModel)]="review.comment"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button style="right: 0px" (click)="addComment()">Publish</button>
+</div>

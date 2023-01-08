@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {DatePipe} from "@angular/common";
 import {AuthorizationService} from "../service/authorization.service";
 import {ReviewService} from "../service/review.service";
+import {ReviewDialogComponent} from "../dialog/review-dialog/review-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-reviews',
@@ -19,7 +21,8 @@ export class ReviewsComponent implements OnInit {
               public datePipe: DatePipe,
               private authorizationService: AuthorizationService,
               private reviewService: ReviewService,
-              private router: Router) { }
+              private router: Router,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.accommodationId = this.route.snapshot.params['id'];
@@ -27,11 +30,6 @@ export class ReviewsComponent implements OnInit {
     this.reviewService.getReviewsByAccommodationId(this.accommodationId!).subscribe(result => {
       this.reviewsList = result;
     });
-
-    console.log(this.reviewsList);
-  }
-
-  openDialog() {
 
   }
 
@@ -46,5 +44,16 @@ export class ReviewsComponent implements OnInit {
 
   isUserAdmin(): boolean {
     return this.authorizationService.isUserAdmin();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ReviewDialogComponent, {
+      width: '260px',
+      data: {accommodationId: this.accommodationId},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.fakeReloadPage();
+    });
   }
 }
