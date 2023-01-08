@@ -1,0 +1,36 @@
+<div class="reviews-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <div class="reviews-card">
+    <mat-card class="box">
+
+      <mat-card-header>
+        <mat-card-title><mat-icon>feedback</mat-icon> Reviews</mat-card-title>
+      </mat-card-header>
+
+      <button mat-raised-button class="add-button" (click)="openDialog()">Add a comment</button>
+
+      <div class="row g-3" *ngIf="reviewsList && reviewsList.length > 0">
+        <div class="col-3" *ngFor="let review of reviewsList">
+          <mat-card class="ski-resort-card">
+            <mat-card-header style="text-align: left">
+              <div mat-card-avatar class="card-header-image"></div>
+              <mat-card-title>
+                <ngx-material-rating style="color: #FFD700" [readonly]="true" [(ngModel)]="review.stars" [max]=5></ngx-material-rating>
+              </mat-card-title>
+              <mat-card-subtitle>{{review.user!.lastName}}</mat-card-subtitle>
+<!--              <mat-card-subtitle>{{review.user!.lastName}} - {{datePipe.transform(review.timestamp, "dd-MM-yyyy")}}</mat-card-subtitle>-->
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-card-content class="comment">
+              <span>{{review.comment}}</span>
+            </mat-card-content>
+            <mat-card-actions style="text-align: left">
+              <button *ngIf="isUserAdmin()" mat-raised-button style="background-color: red" (click)="deleteReview(review.reviewId!)">Delete</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+
+    </mat-card>
+  </div>
+</div>

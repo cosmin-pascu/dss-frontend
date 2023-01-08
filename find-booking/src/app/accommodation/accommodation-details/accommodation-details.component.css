@@ -46,10 +46,9 @@
   font-size: large;
 }
 
-.contact-wrapper {
+.see-reviews-button {
   background-color: white;
   float: left;
-  pointer-events: none;
 }
 
 .book-slot-button {

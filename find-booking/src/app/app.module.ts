@@ -10,7 +10,7 @@ import {LoginComponent} from "./login/login.component";
 import {RegisterComponent} from "./register/register.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HomePageComponent} from "./home-page/home-page.component";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatToolbarModule} from "@angular/material/toolbar";
@@ -27,6 +27,9 @@ import {AccommodationDetailsComponent} from "./accommodation/accommodation-detai
 import {NewBookingComponent} from "./new-booking/new-booking.component";
 import {MatNativeDateModule} from "@angular/material/core";
 import {DatePipe} from "@angular/common";
+import {ReviewsComponent} from "./reviews/reviews.component";
+import {ReviewDialogComponent} from "./dialog/review-dialog/review-dialog.component";
+import {NgxMaterialRatingModule} from "ngx-material-rating";
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import {DatePipe} from "@angular/common";
     AccommodationsListComponent,
     NewAccommodationComponent,
     AccommodationDetailsComponent,
-    NewBookingComponent
+    NewBookingComponent,
+    ReviewsComponent,
+    ReviewDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ import {DatePipe} from "@angular/common";
     MatDividerModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxMaterialRatingModule
   ],
   providers: [
     {

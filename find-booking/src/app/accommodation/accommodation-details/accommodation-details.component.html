@@ -37,15 +37,20 @@
             {{accommodation.address}}
           </mat-card-content>
         </mat-card>
-        <br>
-        <span class="warning-message"> {{errorMessage}} </span>
-        <br *ngIf="errorMessage">
       </mat-card-content>
 
-      <mat-card-content *ngIf="isUserAdmin()">
-        <button class="contact-wrapper" mat-raised-button>
-          <mat-icon>contact_phone</mat-icon>
-          {{accommodation.phone}}</button>
+      <mat-card-content>
+        <mat-card style="max-width: 300px; margin: 0 auto;">
+          <mat-card-content>
+            <mat-icon>contact_phone</mat-icon>
+            {{accommodation.phone}}
+          </mat-card-content>
+        </mat-card>
+        <br>
+      </mat-card-content>
+
+      <mat-card-content>
+        <button class="see-reviews-button" mat-raised-button routerLink="/reviews/{{accommodation.accommodationId}}">See Reviews</button>
         <button class="book-slot-button" mat-raised-button routerLink="/new-booking/{{accommodation.accommodationId}}">Book</button>
       </mat-card-content>
 

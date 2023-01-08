@@ -3,6 +3,9 @@ import {Accommodation} from "../domain/Accommodation";
 import {City} from "../domain/City";
 import {Country} from "../domain/Country";
 import {Booking} from "../domain/Booking";
+import {Review} from "../domain/Review";
+import {User} from "../domain/User";
+import {RoleType} from "../domain/RoleType";
 
 @Injectable({
   providedIn: 'root'
@@ -58,5 +61,50 @@ export class MockService {
     booking.bookingId = 1;
 
     return booking;
+  }
+
+  mockReviews(n: number): Array<Review> {
+    let reviews = [];
+
+    for (let i = 0; i < n; i++) {
+      reviews.push(this.mockReview(i));
+    }
+
+    return reviews;
+  }
+
+  private mockReview(x: number): Review {
+    let review = new Review();
+
+    review.reviewId = x;
+    review.user = this.mockUser();
+    review.accommodationId = 0;
+    review.stars = x;
+    review.comment = this.generateComment(x);
+    review.timestamp = '13-02-1989';
+
+    return review;
+  }
+
+  private generateComment(x: number): string {
+    let comment = 'a';
+
+    for (let i = 0; i < 4 * x; i++) {
+      comment += 'b';
+    }
+
+    return comment;
+  }
+
+  mockUser(): User {
+    let user = new User();
+
+    user.userId = 1;
+    user.email = 'someEmail@email.com';
+    user.roleType = RoleType.ADMIN;
+    user.firsName = 'Raul';
+    user.lastName = 'Gonzalez';
+
+    return user;
   }
 }

@@ -1,0 +1,26 @@
+.reviews-wrapper {
+  background-image: url("../../assets/images/login_page_background.jpeg");
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.reviews-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+}
+
+.add-button {
+  background-color: forestgreen;
+  color: snow;
+  margin-bottom: 20px;
+}
+
+.card-header-image {
+  background-image: url('../../assets/images/user_no_photo.jpg');
+  background-size: cover;
+}
