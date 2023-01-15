@@ -10,7 +10,7 @@ import {MockService} from "./mock.service";
   providedIn: 'root'
 })
 export class ReviewService {
-  private apiBaseUrl = 'http://localhost:8080/find-booking/';
+  private apiBaseUrl = 'http://localhost:8000/find-booking/';
 
   constructor(private http: HttpClient,
               private mockService: MockService) {

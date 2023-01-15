@@ -12,6 +12,7 @@ import { of } from 'rxjs';
 })
 export class UserService {
   private apiBaseUrl = 'http://localhost:8080/find-booking/users';
+  private reviewsBaseUrl = 'http://localhost:8000/find-booking/users';
 
   constructor(private http: HttpClient,
               private mockService: MockService) {
@@ -19,6 +20,12 @@ export class UserService {
 
   createUser(user: AddUser): Observable<any> {
     const url = this.apiBaseUrl + '/register'
+
+    return this.http.post(url, user);
+  }
+
+  createUserReviews(user: AddUser): Observable<any> {
+    const url = this.reviewsBaseUrl + '/register'
 
     return this.http.post(url, user);
   }

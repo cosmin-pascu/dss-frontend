@@ -40,7 +40,10 @@ export class RegisterComponent implements OnInit {
   }
 
   handleRegisterSuccess(): void {
-    this.userService.createUser(this.generateGuestUser(this.user)).subscribe(() => {});
+
+    this.userService.createUser(this.generateGuestUser(this.user)).subscribe(() => {
+      this.userService.createUserReviews(this.generateGuestUser(this.user)).subscribe(() => {});
+    });
     this.redirectToLoginPage();
   }
 
