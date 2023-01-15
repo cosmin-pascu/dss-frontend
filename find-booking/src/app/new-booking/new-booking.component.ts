@@ -28,7 +28,7 @@ export class NewBookingComponent implements OnInit {
   onSubmit(): void {
     let newBooking = new NewBooking();
 
-    newBooking.accommodationId = this.accommodationId;
+    newBooking.accommodation!.accommodationId = this.accommodationId;
     newBooking.checkInDate = this.datePipe.transform(this.booking.checkInDate, "yyyy-MM-dd")!;
     newBooking.checkOutDate = this.datePipe.transform(this.booking.checkOutDate, "yyyy-MM-dd")!;
     newBooking.rooms = this.booking.rooms;

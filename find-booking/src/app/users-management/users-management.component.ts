@@ -55,7 +55,7 @@ export class UsersManagementComponent implements OnInit {
   }
 
   makeUser(row: any, event: any) {
-    this.changeUserRole(row.email, RoleType.GUEST);
+    this.changeUserRole(row.email, RoleType.USER);
   }
 
   changeUserRole(email: string, role: RoleType) {

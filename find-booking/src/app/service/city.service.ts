@@ -7,7 +7,7 @@ import {City} from "../domain/City";
   providedIn: 'root'
 })
 export class CityService {
-  private apiBaseUrl = 'http://localhost:8080/refugees-shelter/';
+  private apiBaseUrl = 'http://localhost:8080/find-booking/';
 
   constructor(private http: HttpClient) {
   }

@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
     addUser.firstName = user.firsName;
     addUser.lastName = user.lastName;
     addUser.email = user.email;
-    addUser.roleType = RoleType.GUEST;
+    addUser.roleType = RoleType.USER;
 
     return addUser;
   }

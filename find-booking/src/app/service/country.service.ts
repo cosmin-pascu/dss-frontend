@@ -7,7 +7,7 @@ import {Country} from "../domain/Country";
   providedIn: 'root'
 })
 export class CountryService {
-  private apiBaseUrl = 'http://localhost:8080/refugees-shelter/';
+  private apiBaseUrl = 'http://localhost:8080/find-booking/';
 
   constructor(private http: HttpClient) {
   }

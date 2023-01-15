@@ -12,7 +12,7 @@ import {MockService} from "./mock.service";
   providedIn: 'root'
 })
 export class AccommodationsService {
-  private apiBaseUrl = 'http://localhost:8080/refugees-shelter/';
+  private apiBaseUrl = 'http://localhost:8080/find-booking/';
 
   constructor(private http: HttpClient,
               private mockService: MockService) {
@@ -21,9 +21,9 @@ export class AccommodationsService {
   getAllAccommodations(): Observable<Array<Accommodation>> {
     const url = this.apiBaseUrl + 'accommodations';
 
-    // return this.http.get<Array<Accommodation>>(url);
+    return this.http.get<Array<Accommodation>>(url);
 
-    return of(this.mockService.mockAccommodations(4));
+    // return of(this.mockService.mockAccommodations(4));
   }
 
   getAccommodationsFiltered(filtersMap: Map<string, string>): Observable<Array<Accommodation>> {
@@ -35,13 +35,13 @@ export class AccommodationsService {
   getAccommodationById(accommodationId: number): Observable<Accommodation> {
     const url = this.apiBaseUrl + 'accommodations/' + accommodationId;
 
-    // return this.http.get<Accommodation>(url)
-    //   .pipe(
-    //     map((response: Accommodation) => {
-    //       return Object.assign(new Accommodation(), response);
-    //     }
-    //     ));
-    return of(this.mockService.mockAccommodation(1));
+    return this.http.get<Accommodation>(url)
+      .pipe(
+        map((response: Accommodation) => {
+          return Object.assign(new Accommodation(), response);
+        }
+        ));
+    // return of(this.mockService.mockAccommodation(1));
   }
 
   addAccommodation(accommodation: Accommodation): Observable<Accommodation> {

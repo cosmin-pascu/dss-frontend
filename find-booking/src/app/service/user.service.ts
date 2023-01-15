@@ -11,7 +11,7 @@ import { of } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private apiBaseUrl = 'http://localhost:8080/refugees-shelter/users';
+  private apiBaseUrl = 'http://localhost:8080/find-booking/users';
 
   constructor(private http: HttpClient,
               private mockService: MockService) {
@@ -32,8 +32,8 @@ export class UserService {
   getAllUsers(): Observable<Array<User>> {
     const url = this.apiBaseUrl;
 
-    return of(this.mockService.mockUsers(5));
-    // return this.http.get<Array<User>>(url);
+    // return of(this.mockService.mockUsers(5));
+    return this.http.get<Array<User>>(url);
   }
 
   changeUserRole(user: User): Observable<any> {

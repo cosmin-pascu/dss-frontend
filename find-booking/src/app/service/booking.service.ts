@@ -11,7 +11,7 @@ import {NewBooking} from "../domain/NewBooking";
   providedIn: 'root'
 })
 export class BookingService {
-  private apiBaseUrl = 'http://localhost:8080/refugees-shelter/';
+  private apiBaseUrl = 'http://localhost:8080/find-booking/';
 
   constructor(private http: HttpClient,
               private mockService: MockService) {
@@ -20,13 +20,13 @@ export class BookingService {
   addBooking(booking: NewBooking): Observable<Booking> {
     const url = this.apiBaseUrl + 'bookings';
 
-    return of(this.mockService.mockBooking());
+    // return of(this.mockService.mockBooking());
 
-    // return this.http.post<Booking>(url, booking)
-    //   .pipe(
-    //     map((response: Booking) => {
-    //       return Object.assign(new Booking(), response)
-    //     })
-    //   )
+    return this.http.post<Booking>(url, booking)
+      .pipe(
+        map((response: Booking) => {
+          return Object.assign(new Booking(), response)
+        })
+      )
   }
 }

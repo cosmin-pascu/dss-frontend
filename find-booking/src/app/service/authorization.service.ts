@@ -19,9 +19,9 @@ export class AuthorizationService {
 
     isUserAdmin(): boolean {
     const userRole = localStorage.getItem('user_role');
-    return true;
+    // return true;
 
-    // return userRole != null && userRole === RoleType.ADMIN;
+    return userRole != null && userRole === RoleType.ADMIN;
     }
 
 }

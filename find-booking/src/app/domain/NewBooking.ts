@@ -1,8 +1,17 @@
+import {Accommodation} from "./Accommodation";
+
 export class NewBooking {
-  accommodationId?: number;
+  accommodation?: Accommodation;
   checkInDate?: string;
   checkOutDate?: string;
   rooms?: number;
   numberOfPeople?: number;
   otherDetails?: string;
+
+
+  constructor() {
+    this.accommodation = new Accommodation();
+  }
 }
+
+
