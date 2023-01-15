@@ -10,7 +10,7 @@ import {MockService} from "./mock.service";
   providedIn: 'root'
 })
 export class ReviewService {
-  private apiBaseUrl = 'http://localhost:8080/winter-sports-advisor/';
+  private apiBaseUrl = 'http://localhost:8080/find-booking/';
 
   constructor(private http: HttpClient,
               private mockService: MockService) {
@@ -28,10 +28,10 @@ export class ReviewService {
   }
 
   getReviewsByAccommodationId(accommodationId: number): Observable<Array<Review>> {
-    const url = this.apiBaseUrl + 'reviews/by-ski-resort?skiResortId=' + accommodationId;
+    const url = this.apiBaseUrl + 'reviews/by-accommodation?accommodationId=' + accommodationId;
 
-    return of(this.mockService.mockReviews(5));
-    // return this.http.get<Array<Review>>(url);
+    // return of(this.mockService.mockReviews(5));
+    return this.http.get<Array<Review>>(url);
   }
 
   deleteReview(reviewId: number) {

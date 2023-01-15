@@ -5,6 +5,7 @@ import {ReviewService} from "../../service/review.service";
 import {ActivatedRoute} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Accommodation} from "../../domain/Accommodation";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-review-dialog',
@@ -21,6 +22,7 @@ export class ReviewDialogComponent implements OnInit {
 
   constructor(private reviewService: ReviewService,
               private activeRoute: ActivatedRoute,
+              private userService: UserService,
               public dialogRef: MatDialogRef<ReviewDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Accommodation) { }
 
@@ -35,9 +37,12 @@ export class ReviewDialogComponent implements OnInit {
   addComment(): void {
     this.prepareReviewFormat();
 
-    this.reviewService.addReview(this.review).subscribe(result => {
-      this.dialogRef.close();
-    })
+    this.userService.getLoggedInUser().subscribe(user => {
+      this.review.user = user;
+      this.reviewService.addReview(this.review).subscribe(result => {
+        this.dialogRef.close();
+      })
+    });
   }
 
   prepareReviewFormat() {

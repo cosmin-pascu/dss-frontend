@@ -41,4 +41,10 @@ export class UserService {
 
     return this.http.put(url, user);
   }
+
+  getLoggedInUser(): Observable<User> {
+    const url = this.apiBaseUrl + '/logged-in-user'
+
+    return this.http.get(url);
+  }
 }
